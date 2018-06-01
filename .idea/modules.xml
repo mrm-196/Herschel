@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Herschel.iml" filepath="$PROJECT_DIR$/Herschel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Herschel_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Herschel_main.iml" group="Herschel" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Herschel_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Herschel_test.iml" group="Herschel" />
+    </modules>
+  </component>
+</project>
