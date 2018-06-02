@@ -10,25 +10,25 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class UserController
 {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/users")
+    @GetMapping("")
     public List<User> getAllUsers()
     {
         return userRepository.findAll();
     }
 
-    @PostMapping("/users")
+    @PostMapping("")
     public User createUser(@RequestBody User user) // @Valid
     {
         return userRepository.save(user);
     }
 
-    @PostMapping("/users/{id}")
+    @PostMapping("/{id}")
     public User updateUser(@PathVariable(value = "id") Long userId,
                            @Valid @RequestBody User userDetails)
     {
@@ -40,19 +40,19 @@ public class UserController
         return userRepository.save(user);
     }
 
-    @GetMapping("/users/findById/{id}")
+    @GetMapping("/findById/{id}")
     public User getUserById(@PathVariable(value = "id") Long userId)
     {
         return userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
     }
 
-    @GetMapping("/users/findByUsername/{username}")
+    @GetMapping("/findByUsername/{username}")
     public User getUserByUsername(@PathVariable(value = "username") String username)
     {
         return userRepository.findUserByUsername(username).orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
     }
 
-    @PostMapping("/users/login")
+    @PostMapping("/login")
     public User login(@RequestBody String username, @RequestBody String password)
     {
         User user = userRepository.findUserByUsername(username).orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
@@ -62,14 +62,14 @@ public class UserController
         return user;
     }
 
-    @GetMapping("/users/loginStatus")
+    @GetMapping("/loginStatus")
     public boolean isLoggedIn(@RequestBody Long id)
     {
         User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
         return user.isLoggedIn();
     }
 
-    @PostMapping("/users/logout")
+    @PostMapping("/logout")
     public boolean logout(@RequestBody Long id)
     {
         User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
