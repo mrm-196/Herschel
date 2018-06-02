@@ -58,6 +58,7 @@ public class UserController
         User user = userRepository.findUserByUsername(username).orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
         if(password.equals(user.getPassword()))
             user.setLoggedIn(true);
+        userRepository.save(user);
         return user;
     }
 
@@ -75,6 +76,7 @@ public class UserController
         if(user.isLoggedIn())
         {
             user.setLoggedIn(false);
+            userRepository.save(user);
             return true;
         }
         return false;
