@@ -33,8 +33,9 @@ public class ProductController
         return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product", "id", id));
     }
 
+
     @GetMapping("/findByType/{type}")
-    public List<Product> getSpecificProductType(@PathVariable(value = "type") String type)
+    public List<Product> getAllOfThisType(@PathVariable(value = "type") String type)
     {
         return productRepository.findAllByProductType(type);
     }
@@ -48,16 +49,4 @@ public class ProductController
         return false;
     }
 
-    @GetMapping("/buyProduct/{id}")
-    public boolean buyProduct(@PathVariable(value = "id") Long productId, @RequestBody int requiredNumber)
-    {
-        if(!checkProduct(productId, requiredNumber))
-            return false;
-        Product product = productRepository.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
-        int availNumber = product.getAvailable();
-        availNumber -= requiredNumber;
-        product.setAvailable(availNumber);
-        productRepository.save(product);
-        return true;
-    }
 }

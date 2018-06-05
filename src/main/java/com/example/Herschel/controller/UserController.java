@@ -47,7 +47,7 @@ public class UserController
     }
 
     @GetMapping("/findByUsername/{username}")
-    public User getUserByUsername(@PathVariable(value = "username") String username)
+public User getUserByUsername(@PathVariable(value = "username") String username)
     {
         return userRepository.findUserByUsername(username).orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
     }

@@ -15,12 +15,12 @@ public class Product
 
     private String productType;
     private String model;
-    private int year;
+    private Long year;
     private String color;
-    private int price;
-    private int available;
+    private Long price;
+    private Long available;
 
-    public Product(String productType, String model, int year, String color, int price, int available) {
+    public Product(String productType, String model, Long year, String color, Long price, Long available) {
         this.productType = productType;
         this.model = model;
         this.year = year;
@@ -34,11 +34,11 @@ public class Product
 
     }
 
-    public int getAvailable() {
+    public Long getAvailable() {
         return available;
     }
 
-    public void setAvailable(int available) {
+    public void setAvailable(Long available) {
         this.available = available;
     }
 
@@ -66,11 +66,11 @@ public class Product
         this.model = model;
     }
 
-    public int getYear() {
+    public Long getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Long year) {
         this.year = year;
     }
 
@@ -82,11 +82,11 @@ public class Product
         this.color = color;
     }
 
-    public int getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 }
